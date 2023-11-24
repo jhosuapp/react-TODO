@@ -1,9 +1,9 @@
-const TodoItem = (props)=>{
+const TodoItem = ({ text, completed })=>{
     return (
         <li>
             <span>V</span>
-            <p>{props.name}</p>
-            <span>X</span>
+            <p>{text}</p>
+            <span></span>
         </li>
     );
 }

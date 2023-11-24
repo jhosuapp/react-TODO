@@ -1,3 +1,6 @@
+//React
+import React from 'react';
+//Styles
 import './App.css';
 //Components
 import { TodoItem } from './components/TodoItem';
@@ -7,26 +10,32 @@ import { TodoList } from './components/TodoList';
 import { TodoBtnCreate } from './components/TodoBtnCreate';
 
 const App = ()=>{
-  return (
-    <div className="App">
 
-      <TodoCounter />
+  const ArrTodos = [
+    { text: 'Aprender React', completed: false },
+    { text: 'Aprender javascript', completed: true },
+    { text: 'Aprender css', completed: false },
+    { text: 'Aprender git', completed: false }
+  ];
+
+  return (
+    <React.Fragment>
+
+      <TodoCounter completed="2" total="3"/>
       <TodoSearch />
 
       <TodoList>
-        <TodoItem 
-          name="hola"
-        />
-        <TodoItem 
-          name="hola"
-        />
-        <TodoItem 
-          name="hola"
-        />
+        {ArrTodos.map((data, indice)=>(
+          <TodoItem 
+            key={indice}
+            text={data.text}
+            completed={data.completed}
+          />
+        ))}
       </TodoList>
 
       <TodoBtnCreate />
-    </div>
+    </React.Fragment>
   );
 }
 
