@@ -1,7 +1,5 @@
-//React
-import React from 'react';
 //Styles
-import './App.css';
+import './scss/main.scss';
 //Components
 import { TodoItem } from './components/TodoItem';
 import { TodoCounter } from './components/TodoCounter';
@@ -19,7 +17,7 @@ const App = ()=>{
   ];
 
   return (
-    <React.Fragment>
+    <>
 
       <TodoCounter completed="2" total="3"/>
       <TodoSearch />
@@ -35,7 +33,7 @@ const App = ()=>{
       </TodoList>
 
       <TodoBtnCreate />
-    </React.Fragment>
+    </>
   );
 }
 
