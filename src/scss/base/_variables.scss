@@ -2,7 +2,11 @@
 $palette:(
     'white': #fff,
     'black': #000,
-    'primary': #200596
+    'primary': #801fdb,
+    'secondary': #002c53,
+    'tertiary': #d6d7d8,
+    'bg': #fafafa
+
 );
 //BREAKPOINTS
 $breakpoints: (
@@ -15,4 +19,4 @@ $breakpoints: (
 );
 //OTHERS
 $transition-duration: 0.3s;
-$limit-width: 1400px;
+$limit-width: 1300px;

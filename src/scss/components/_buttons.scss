@@ -1,0 +1,34 @@
+@use '../base/functions' as fun;
+@use '../base/mixin' as mix;
+@use '../base/variables' as var;
+
+.btn{
+    background-color: fun.color('primary');
+    border: none;
+    border: 2px solid fun.color('primary');
+    outline: inherit;
+    border-radius: 100px;
+    color: fun.color('white');
+    width: 100%;
+    max-width: 200px;
+    padding: 0 20px;
+    height: 40px;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: .5s ease;
+    transition-property: background-color color;
+    cursor: pointer;
+    &:hover{
+        background-color: transparent;
+        color: fun.color('primary');
+    }
+}
+
+@media(max-width: fun.breakpoints('ipad-big')){
+    .btn{
+        font-size: 1.3rem;
+        height: 37.5px;
+        max-width: 175px;
+    }
+}

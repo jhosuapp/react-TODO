@@ -1,0 +1,24 @@
+@use '../base/functions' as fun;
+@use '../base/mixin' as mix;
+
+h1{
+    color: fun.color('secondary');
+    font-weight: 600;
+    font-size: 3rem;
+    text-align: center;
+}
+h2{
+    color: fun.color('secondary');
+    font-weight: 600;
+    font-size: 2.5rem;
+    text-align: left;
+}
+
+@media(max-width: fun.breakpoints('ipad-big')){
+    h1{
+        font-size: 2.5rem;
+    }
+    h2{
+        font-size: 2.2rem;
+    }
+}
