@@ -1,6 +1,6 @@
 const TodoCounter = ({ completed, total })=>{
     return (
-        <h1>Has completado {completed} de {total} TODOS</h1>
+        <h1>Completed {completed} to {total}</h1>
     );
 }
 
