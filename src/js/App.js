@@ -1,26 +1,32 @@
+//React
+import {useState, useEffect} from 'react';
 //Styles
 import '../scss/main.scss';
 import '../scss/templates/_todo.scss';
 //Components
 import { TodoItem } from './components/TodoItem';
 import { TodoCounter } from './components/TodoCounter';
-// import { TodoSearch } from './components/TodoSearch';
 import { TodoList } from './components/TodoList';
 import { TodoCreateTask } from './components/TodoCreateTask';
 import { TodoCtn } from './components/TodoCtn';
 import { TodoSearch } from './components/TodoSearch';
+import { TodoDefault } from './components/TodoDefault';
+import { TodoAccents } from './components/TodoAccents';
 
 const App = ()=>{
-
-  const ArrTodos = [
-    { text: 'Aprender React', completed: false },
-    { text: 'Aprender javascript', completed: true },
-    { text: 'Aprender css', completed: false },
-    { text: 'Aprender css', completed: false },
-    { text: 'Aprender css', completed: false },
-    { text: 'Aprender css', completed: false },
-    { text: 'Aprender git', completed: false }
-  ];
+  //States
+  const [stateTodo] = useState(TodoDefault);
+  const [stateTodoSearch, setStateTodoSearch] = useState(stateTodo);
+  const [stateValue, setStateValue] = useState('');
+  //Filter completed and total todos
+  const completedTodo = stateTodo.filter(todo=> !!todo.completed ).length;
+  const totalTodo = stateTodo.length;
+  //Filter todo for name when StatteTodo or stateValue change
+  useEffect(() => {
+    const newRegExp = RegExp(TodoAccents(stateValue.toLowerCase()));
+    const filterTodo = stateTodo.filter(item => newRegExp.test(TodoAccents(item.text.toLowerCase())));
+    setStateTodoSearch(filterTodo);
+  }, [stateTodo, stateValue]);
 
   return (
     <>
@@ -31,10 +37,10 @@ const App = ()=>{
         </section>
         {/* List task, search task and feedback task */}
         <section>
-          <TodoCounter completed='2' total='3'/>
-          <TodoSearch />
+          <TodoCounter completed={completedTodo} total={totalTodo} />
+          <TodoSearch stateValue={stateValue} setStateValue={setStateValue}/>
           <TodoList>
-            {ArrTodos.map((data, indice)=>(
+            {stateTodoSearch.map((data, indice)=>(
               <TodoItem 
                 key={indice}
                 text={data.text}

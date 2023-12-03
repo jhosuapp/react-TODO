@@ -1,10 +1,8 @@
 import iconSearch from '../../img/svg/icon-search.svg';
 import React from 'react';
 
-const TodoSearch = ()=>{
-
-    const [stateValue, setStateValue] = React.useState('');
-    console.log(stateValue);
+const TodoSearch = ({stateValue, setStateValue})=>{
+    
     return ( 
         <div className="block-input">
             <input 
