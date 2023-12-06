@@ -1,5 +1,5 @@
 //React
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 //Styles
 import '../scss/main.scss';
 import '../scss/templates/_todo.scss';
@@ -15,18 +15,28 @@ import { TodoAccents } from './components/TodoAccents';
 
 const App = ()=>{
   //States
-  const [stateTodo] = useState(TodoDefault);
-  const [stateTodoSearch, setStateTodoSearch] = useState(stateTodo);
+  const [stateTodo, setStateTodo] = useState(TodoDefault);
   const [stateValue, setStateValue] = useState('');
   //Filter completed and total todos
   const completedTodo = stateTodo.filter(todo=> !!todo.completed ).length;
   const totalTodo = stateTodo.length;
   //Filter todo for name when StatteTodo or stateValue change
-  useEffect(() => {
-    const newRegExp = RegExp(TodoAccents(stateValue.toLowerCase()));
-    const filterTodo = stateTodo.filter(item => newRegExp.test(TodoAccents(item.text.toLowerCase())));
-    setStateTodoSearch(filterTodo);
-  }, [stateTodo, stateValue]);
+  const newRegExp = RegExp(TodoAccents(stateValue.toLowerCase()));
+  const filterTodo = stateTodo.filter(item => newRegExp.test(TodoAccents(item.text.toLowerCase())));
+  //Complete todos
+  const completeTodo = (text)=>{
+    const allTodoCompleted = [...stateTodo];
+    const indexTodoComplete = allTodoCompleted.findIndex(todo => todo.text === text);
+    allTodoCompleted[indexTodoComplete].completed = true;
+    setStateTodo(allTodoCompleted);
+  }
+  //Delete todos
+  const deleteTodo = (text)=>{
+    const allTodoDelete = [...stateTodo];
+    const indexTodoDelete = allTodoDelete.findIndex(todo => todo.text === text);
+    allTodoDelete.splice(indexTodoDelete, 1);
+    setStateTodo(allTodoDelete);
+  }
 
   return (
     <>
@@ -40,11 +50,13 @@ const App = ()=>{
           <TodoCounter completed={completedTodo} total={totalTodo} />
           <TodoSearch stateValue={stateValue} setStateValue={setStateValue}/>
           <TodoList>
-            {stateTodoSearch.map((data, indice)=>(
+            {filterTodo.map((data)=>(
               <TodoItem 
-                key={indice}
+                key={data.text}
                 text={data.text}
                 completed={data.completed}
+                onComplete={()=>{completeTodo(data.text)}}
+                onDelete={()=>{deleteTodo(data.text)}}
               />
             ))}
           </TodoList>
