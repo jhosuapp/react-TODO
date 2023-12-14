@@ -1,22 +1,14 @@
-import iconCheck from '../../img/svg/icon-check.svg';
-import iconTrash from '../../img/svg/icon-trash.svg';
+import { TodoIcon } from './TodoIcon';
 
 const TodoItem = ({ text, completed, onComplete, onDelete })=>{
     return (
         <li className={completed ? 'completed' : ''}>
             <div className='block'>
                 <div className='state-task' onClick={onComplete}></div>
-                <picture className='check-task'>
-                    <img src={iconCheck} alt="icon check"/>
-                </picture>
+                <TodoIcon type="IconCheck" cls="check-task" color="#801fdb"/>
                 <p>{text}</p>
             </div>
-            <picture 
-                className='remove-task'                 
-                onClick={onDelete}
-            >
-                <img src={iconTrash} alt="icon trash"/>
-            </picture>
+            <TodoIcon type="IconDelete" cls="remove-task" onClick={onDelete} color="#ff0000"/>
         </li>
     );
 }
