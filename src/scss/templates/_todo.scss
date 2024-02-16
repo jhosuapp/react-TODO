@@ -135,6 +135,20 @@ main{
                 }
             }
         }
+        .todo-results{
+            font-size: 2rem;
+            color: fun.color('primary');
+            font-weight: 500;
+            margin-top: -10px;
+            margin-bottom: 20px;
+            text-align: center;
+            b{
+                font-weight: 800;
+            }
+            &.hide{
+                display: none;
+            }
+        }
     }
 }
 

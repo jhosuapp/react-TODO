@@ -1,5 +1,5 @@
 //React
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 //Styles
 import '../scss/main.scss';
 import '../scss/templates/_todo.scss';
@@ -12,11 +12,17 @@ import { TodoCtn } from './components/TodoCtn';
 import { TodoSearch } from './components/TodoSearch';
 import { TodoDefault } from './components/TodoDefault';
 import { TodoAccents } from './components/TodoAccents';
+import { TodoResults } from './components/TodoResults'; 
 
 const App = ()=>{
   //States
   const [stateTodo, setStateTodo] = useState(TodoDefault);
   const [stateValue, setStateValue] = useState('');
+  const [showResults, setShowResults] = useState(false);
+  //Show message results when keypress and length > 0
+  useEffect(() => {
+    stateValue.length > 0 ? setShowResults(true) : setShowResults(false);
+  }, [stateValue]);
   //Filter completed and total todos
   const completedTodo = stateTodo.filter(todo=> !!todo.completed ).length;
   const totalTodo = stateTodo.length;
@@ -49,6 +55,7 @@ const App = ()=>{
         <section>
           <TodoCounter completed={completedTodo} total={totalTodo} />
           <TodoSearch stateValue={stateValue} setStateValue={setStateValue}/>
+          <TodoResults results={filterTodo.length} cls={!showResults && 'hide'}/>
           <TodoList>
             {filterTodo.map((data)=>(
               <TodoItem 
