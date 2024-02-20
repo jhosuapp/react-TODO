@@ -13,17 +13,12 @@ import { TodoSearch } from './components/TodoSearch';
 import { TodoDefault } from './components/TodoDefault';
 import { TodoAccents } from './components/TodoAccents';
 import { TodoResults } from './components/TodoResults'; 
+//Custom hooks
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 const App = ()=>{
   //States
-  const [stateTodo, setStateTodo] = useState(()=>{
-    if(!localStorage.getItem('TODO_V1')) {
-        localStorage.setItem('TODO_V1', JSON.stringify(TodoDefault));
-        return TodoDefault;
-      }else{
-        return JSON.parse(localStorage.getItem('TODO_V1'));
-      }
-  });
+  const [stateTodo, setStateTodo] = useLocalStorage('TODO_V1', TodoDefault);
   const [stateValue, setStateValue] = useState('');
   const [showResults, setShowResults] = useState(false);
   //Show message results when keypress and length > 0
@@ -41,7 +36,6 @@ const App = ()=>{
     const allTodoCompleted = [...stateTodo];
     const indexTodoComplete = allTodoCompleted.findIndex(todo => todo.text === text);
     allTodoCompleted[indexTodoComplete].completed = true;
-    localStorage.setItem('TODO_V1', JSON.stringify(allTodoCompleted));
     setStateTodo(allTodoCompleted);
   }
   //Delete todos
@@ -49,7 +43,6 @@ const App = ()=>{
     const allTodoDelete = [...stateTodo];
     const indexTodoDelete = allTodoDelete.findIndex(todo => todo.text === text);
     allTodoDelete.splice(indexTodoDelete, 1);
-    localStorage.setItem('TODO_V1', JSON.stringify(allTodoDelete));
     setStateTodo(allTodoDelete);
   }
 
