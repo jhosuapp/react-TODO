@@ -8,6 +8,8 @@ import { TodoSearch } from './components/TodoSearch';
 import { TodoResults } from './components/TodoResults'; 
 
 const AppUi = ({
+    error,
+    loading,
     completedTodo,
     totalTodo,
     stateValue,
@@ -15,7 +17,7 @@ const AppUi = ({
     filterTodo,
     showResults,
     completeTodo,
-    deleteTodo
+    deleteTodo,
 })=>{
     return (
         <>

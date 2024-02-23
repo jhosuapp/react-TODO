@@ -13,7 +13,7 @@ import { AppUi } from './AppUi';
 
 const App = ()=>{
   //States
-  const [stateTodo, setStateTodo] = useLocalStorage('TODO_V1', TodoDefault);
+  const { item:stateTodo, setItem:setStateTodo, error, loading} = useLocalStorage('TODO_V1', TodoDefault);
   const [stateValue, setStateValue] = useState('');
   const [showResults, setShowResults] = useState(false);
   //Show message results when keypress and length > 0
@@ -43,6 +43,8 @@ const App = ()=>{
 
   return (
     <AppUi 
+      error={error}
+      loading={loading}
       completedTodo={completedTodo}
       totalTodo={totalTodo}
       stateValue={stateValue}
