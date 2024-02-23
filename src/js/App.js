@@ -5,7 +5,6 @@ import '../scss/main.scss';
 import '../scss/templates/_todo.scss';
 //Components
 import { TodoAccents } from './components/TodoAccents';
-import { TodoDefault } from './components/TodoDefault';
 //Custom hooks
 import { useLocalStorage } from './hooks/useLocalStorage';
 //App ui
@@ -13,7 +12,7 @@ import { AppUi } from './AppUi';
 
 const App = ()=>{
   //States
-  const { item:stateTodo, setItem:setStateTodo, error, loading} = useLocalStorage('TODO_V1', TodoDefault);
+  const { item:stateTodo, saveItem:setStateTodo, error, loading } = useLocalStorage('TODO_V1', []);
   const [stateValue, setStateValue] = useState('');
   const [showResults, setShowResults] = useState(false);
   //Show message results when keypress and length > 0

@@ -6,6 +6,7 @@ import { TodoCreateTask } from './components/TodoCreateTask';
 import { TodoCtn } from './components/TodoCtn';
 import { TodoSearch } from './components/TodoSearch';
 import { TodoResults } from './components/TodoResults'; 
+import { TodoLoader } from './components/TodoLoader';
 
 const AppUi = ({
     error,
@@ -31,6 +32,8 @@ const AppUi = ({
               <TodoCounter completed={completedTodo} total={totalTodo} />
               <TodoSearch stateValue={stateValue} setStateValue={setStateValue}/>
               <TodoResults results={filterTodo.length} cls={!showResults && 'hide'}/>
+              { loading && <TodoLoader /> }
+              { error && <p>Ha ocurrido un error inesperado</p> }
               <TodoList>
                 {filterTodo.map((data)=>(
                   <TodoItem 
