@@ -10,7 +10,7 @@ const TodoContext = createContext();
 const TodoProvider = ({ children })=>{
     //States
     const { item:stateTodo, saveItem:setStateTodo, error, loading } = useLocalStorage('TODO_V1', []);
-    const [stateValue, setStateValue] = useState('s');
+    const [stateValue, setStateValue] = useState('');
     const [showResults, setShowResults] = useState(false);
     //Show message results when keypress and length > 0
     useEffect(() => {
