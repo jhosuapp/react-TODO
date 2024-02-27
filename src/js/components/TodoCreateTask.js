@@ -1,6 +1,11 @@
 import imageTask from '../../img/jpg/task.jpg';
+//Context
+import { useContext } from "react";
+import { TodoContext } from '../context/TodoContext';
 
 const TodoCreateTask = ()=>{
+    const { setModal } = useContext(TodoContext);
+    
     return(
         <form>
             <div>
@@ -9,7 +14,7 @@ const TodoCreateTask = ()=>{
                     <label>Task name</label>
                     <input type="search" placeholder="Write a task" id="search" name="search" />
                 </div>
-                <button className="btn">Create task</button>
+                <a onClick={ ()=>{ setModal(true) } }  className="btn">Create task</a>
             </div>
             <picture>
                 <img src={imageTask} alt="background task" />

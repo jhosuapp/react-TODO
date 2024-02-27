@@ -12,6 +12,8 @@ const TodoProvider = ({ children })=>{
     const { item:stateTodo, saveItem:setStateTodo, error, loading } = useLocalStorage('TODO_V1', []);
     const [stateValue, setStateValue] = useState('');
     const [showResults, setShowResults] = useState(false);
+    const [modal, setModal] = useState(false);
+
     //Show message results when keypress and length > 0
     useEffect(() => {
         stateValue.length > 0 ? setShowResults(true) : setShowResults(false);
@@ -49,6 +51,8 @@ const TodoProvider = ({ children })=>{
             showResults,
             completeTodo,
             deleteTodo,
+            modal, 
+            setModal
         }}>
             {children}
         </TodoContext.Provider>

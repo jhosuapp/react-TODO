@@ -8,13 +8,14 @@ import { TodoSearch } from './components/TodoSearch';
 import { TodoResults } from './components/TodoResults'; 
 import { TodoLoader } from './components/TodoLoader';
 import { TodoContext } from './context/TodoContext';
+import { Modal } from './components/Modal';
+import { ModalContent } from './components/ModalContent';
 //React context
 import { useContext } from 'react';
-//Context
 
 const AppUi = ()=>{
     //Get all global variables
-    const { error, loading, filterTodo, completeTodo, deleteTodo, stateTodo } = useContext(TodoContext);
+    const { error, loading, filterTodo, completeTodo, deleteTodo, stateTodo, modal, setModal } = useContext(TodoContext);
     return (
         <>
           <TodoCtn>
@@ -27,26 +28,31 @@ const AppUi = ()=>{
             <TodoCounter />
             <TodoSearch />
             <TodoResults />
-              <TodoList>
-                { loading && 
-                  <div className='loader'>
-                    <TodoLoader /> 
-                    <TodoLoader /> 
-                    <TodoLoader /> 
-                  </div>
-                }
-                { error && <p>Ha ocurrido un error inesperado</p> }
-                { !stateTodo.length > 0 && !loading && <p className='todo-not-disponibility'>No cuentas con tareas disponibles, crea una ahora</p>  }
-                {filterTodo.map((data)=>(
-                  <TodoItem 
-                    key={data.text}
-                    text={data.text}
-                    completed={data.completed}
-                    onComplete={()=>{completeTodo(data.text)}}
-                    onDelete={()=>{deleteTodo(data.text)}}
-                  />
-                ))}
-              </TodoList>
+            <TodoList>
+              { loading && 
+                <div className='loader'>
+                  <TodoLoader /> 
+                  <TodoLoader /> 
+                  <TodoLoader /> 
+                </div>
+              }
+              { error && <p>Ha ocurrido un error inesperado</p> }
+              { !stateTodo.length > 0 && !loading && <p className='todo-not-disponibility'>No cuentas con tareas disponibles, crea una ahora</p>  }
+              {filterTodo.map((data)=>(
+                <TodoItem 
+                  key={data.text}
+                  text={data.text}
+                  completed={data.completed}
+                  onComplete={()=>{completeTodo(data.text)}}
+                  onDelete={()=>{deleteTodo(data.text)}}
+                />
+              ))}
+            </TodoList>
+            { modal && 
+              <Modal>
+                <ModalContent />
+              </Modal> 
+            }
             </section>
           </TodoCtn>
         </>
