@@ -14,7 +14,7 @@ import { useContext } from 'react';
 
 const AppUi = ()=>{
     //Get all global variables
-    const { error, loading, filterTodo, completeTodo, deleteTodo } = useContext(TodoContext);
+    const { error, loading, filterTodo, completeTodo, deleteTodo, stateTodo } = useContext(TodoContext);
     return (
         <>
           <TodoCtn>
@@ -36,6 +36,7 @@ const AppUi = ()=>{
                   </div>
                 }
                 { error && <p>Ha ocurrido un error inesperado</p> }
+                { !stateTodo.length > 0 && !loading && <p className='todo-not-disponibility'>No cuentas con tareas disponibles, crea una ahora</p>  }
                 {filterTodo.map((data)=>(
                   <TodoItem 
                     key={data.text}

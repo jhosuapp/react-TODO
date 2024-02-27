@@ -150,6 +150,14 @@ main{
             }
         }
     }
+    .todo-not-disponibility{
+        text-align: center;
+        font-size: 1.6rem;
+        color: fun.color('white');
+        background-color: fun.color('primary');
+        padding: 10px;
+        border-radius: 10px;
+    }
 }
 
 .bg{

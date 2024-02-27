@@ -38,6 +38,7 @@ const TodoProvider = ({ children })=>{
     }
     return (
         <TodoContext.Provider value={{
+            stateTodo,
             error,
             loading,
             completedTodo,
