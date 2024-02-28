@@ -25,6 +25,13 @@ const TodoProvider = ({ children })=>{
     //Filter todo for name when StatteTodo or stateValue change
     const newRegExp = RegExp(TodoAccents(stateValue.toLowerCase()));
     const filterTodo = stateTodo.filter(item => newRegExp.test(TodoAccents(item.text.toLowerCase())));
+    //Create todos
+    const createTodo = (text)=>{
+        const allTodo = [...stateTodo];
+        const json = { completed: false, text: text }
+        allTodo.push(json);
+        setStateTodo(allTodo);
+    }
     //Complete todos
     const completeTodo = (text)=>{
         const allTodoCompleted = [...stateTodo];
@@ -46,6 +53,7 @@ const TodoProvider = ({ children })=>{
             error,
             loading,
             completedTodo,
+            createTodo,
             totalTodo,
             stateValue,
             setStateValue,
