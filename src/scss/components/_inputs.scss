@@ -37,4 +37,13 @@
             box-shadow: 0 0 5px 0 fun.color('secondary');
         }
     }
+    .error{
+        color: rgb(179, 176, 176);
+        font-size: 1.3rem;
+        margin-top: 5px;
+        display: none;
+        &.active{
+            display: block;
+        }
+    }
 }

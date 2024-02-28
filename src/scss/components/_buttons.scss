@@ -33,6 +33,10 @@
             color: fun.color('danger');
         }
     }
+    &.disabled{
+        opacity: .7;
+        pointer-events: none;
+    }
 }
 
 @media(max-width: fun.breakpoints('ipad-big')){

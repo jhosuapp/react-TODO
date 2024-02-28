@@ -11,6 +11,7 @@ const TodoProvider = ({ children })=>{
     //States
     const { item:stateTodo, saveItem:setStateTodo, error, loading } = useLocalStorage('TODO_V1', []);
     const [stateValue, setStateValue] = useState('');
+    const [stateValueCreate, setStateValueCreate] = useState('');
     const [showResults, setShowResults] = useState(false);
     const [modal, setModal] = useState(false);
 
@@ -38,6 +39,7 @@ const TodoProvider = ({ children })=>{
         allTodoDelete.splice(indexTodoDelete, 1);
         setStateTodo(allTodoDelete);
     }
+    //Return provider
     return (
         <TodoContext.Provider value={{
             stateTodo,
@@ -47,6 +49,8 @@ const TodoProvider = ({ children })=>{
             totalTodo,
             stateValue,
             setStateValue,
+            stateValueCreate, 
+            setStateValueCreate,
             filterTodo,
             showResults,
             completeTodo,
