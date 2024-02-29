@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/react-TODO/static/css/main.79edb617.css",
+    "main.js": "/react-TODO/static/js/main.0f566440.js",
+    "static/media/task.jpg": "/react-TODO/static/media/task.45086ecf1ec2beaea443.jpg",
+    "static/media/Roboto-Medium.ttf": "/react-TODO/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
+    "static/media/Roboto-Regular.ttf": "/react-TODO/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
+    "static/media/Roboto-Bold.ttf": "/react-TODO/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
+    "index.html": "/react-TODO/index.html",
+    "static/media/icon-trash.svg": "/react-TODO/static/media/icon-trash.347eb2f46c416e399d5cc7a76d11546c.svg",
+    "static/media/icon-search.svg": "/react-TODO/static/media/icon-search.4ffda6d14d82bf817793aa88fbbf2e66.svg",
+    "static/media/icon-check.svg": "/react-TODO/static/media/icon-check.348dce0c28014b9921ff73acc7006732.svg",
+    "main.79edb617.css.map": "/react-TODO/static/css/main.79edb617.css.map",
+    "main.0f566440.js.map": "/react-TODO/static/js/main.0f566440.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.79edb617.css",
+    "static/js/main.0f566440.js"
+  ]
+}
